@@ -6,17 +6,20 @@ if(isset($_POST['send'])) {
     if(!empty($_POST['email']) && !empty($_POST['password'])){
       $email=$_POST['email'];
         $password=$_POST['password'];
-        $result=getUsersByEmail($password,$email);
+        $result=getUsersByEmail($email);
         
         if($result->rowCount() >0){
             $userInfos = $result->fetch(PDO::FETCH_OBJ);
+
+            if(password_verify( $password,$userInfos->motDePass)){
             session_start();
         $_SESSION['isLogin']=true;
         $_SESSION['role']=$userInfos->idRole;
         $_SESSION['nom']=$userInfos->nomUsers;
         $_SESSION['prenom']=$userInfos->prenomUsers;
         header('location: /index.php');
-        }else $errorMessage='login et mot de passe incorrect';
+            }else $errorMessage='mot de passe incorrect';
+        }else $errorMessage='Email incorect';
 
         
         

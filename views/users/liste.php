@@ -6,6 +6,18 @@
 ?>
 
 <main class="m-5">
+<?php
+          if(isset($_GET['message'])){
+            $message=$_GET['message'];
+            ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert m-5">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <?=$message ?>
+          </div>
+            <?php
+          }
+?>
+<a type="button" href="add.php" class="btn btn-primary position-absolute  end-0 me-5">Ajouter Users</a>
   <h1>
     La liste des utilisateurs
   </h1>

@@ -16,7 +16,10 @@
           <a class="nav-link <?php echo $_SERVER['REQUEST_URI'] == '/views/books/liste.php' ? 'active' : ''?>" href="/views/books/liste.php">Livres</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo $_SERVER['REQUEST_URI'] == '/views/users/liste.php' ? 'active' : ''?>" href="/views/users/liste.php">utilisateurs</a>
+          <a class="nav-link <?php echo $_SERVER['REQUEST_URI'] == '/views/users/liste.php' ? 'active' : ''?>" href="/views/users/liste.php"><?php
+          if($_SESSION['role']==1){
+            echo "utilisateurs";
+          } ?></a>
         </li>
         
       </ul>
